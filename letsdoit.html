@@ -6,9 +6,13 @@
 $(document).ready(function(){
     $("button").click(function(){
         $.ajax({url: "https://namanapp.herokuapp.com", dataType: 'jsonp', jsonp: 'callback',jsonpCallback: 'jsonpCallback',success: function(result){
-            $("#div1").html(result.message);
+            //$("#div1").html(result);
+			//alert(result);
         }});
     });
+	function jsonpCallback(data){
+    alert("jsonpCallback");
+}
 });
 </script>
 </head>
