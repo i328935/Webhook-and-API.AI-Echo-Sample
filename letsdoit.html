@@ -4,6 +4,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
+var string ="aas"
     $("button").click(function(){
         $.ajax({url: "https://namanapp.herokuapp.com", dataType: 'jsonp', jsonp: 'callback',jsonpCallback: 'jsonpCallback',success: function(result){
             //$("#div1").html(result);
