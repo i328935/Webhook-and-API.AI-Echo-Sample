@@ -20,6 +20,7 @@ restService.post("/echo", function(req, res) {
     req.body.result.parameters.echoText
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
+	  config.salutation=req.body.result.parameters.echoText;
   return res.json({
     speech: "nAMA",
     displayText:"Naman",
