@@ -26,8 +26,8 @@ restService.post("/echo", function(req, res) {
   });
 });
 
-restService.get("/echo", function() {
-  return "My Name";
+restService.get('/', function(req, res) {
+    res.json({ message: 'hooray! welcome to our api!' });   
 });
 
 restService.post("/audio", function(req, res) {
