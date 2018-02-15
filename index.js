@@ -3,6 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const restService = express();
+global.config = {"salutation": "Hello"};
 
 restService.use(
   bodyParser.urlencoded({
@@ -27,6 +28,10 @@ restService.post("/echo", function(req, res) {
 });
 
 restService.get('/', function(req, res) {
+    res.json({ message: config.salutation });   
+});
+
+restService.get('/echo', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });   
 });
 
