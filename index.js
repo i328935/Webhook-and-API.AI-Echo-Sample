@@ -30,7 +30,7 @@ restService.post("/echo", function(req, res) {
 
 restService.get('/', function(req, res) {
 	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.end(string); 
+	res.end("string"); 
 });
 
 restService.get('/echo', function(req, res) {
