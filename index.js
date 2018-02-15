@@ -29,7 +29,7 @@ restService.post("/echo", function(req, res) {
 });
 
 restService.get('/', function(req, res) {
-    res.json({ message: config.salutation });   
+    res.json({ "message": config.salutation });   
 });
 
 restService.get('/echo', function(req, res) {
