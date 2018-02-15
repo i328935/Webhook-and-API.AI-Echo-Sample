@@ -2,7 +2,7 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-
+global.underscore = require("underscore");
 const restService = express();
 
 restService.use(
@@ -20,9 +20,10 @@ restService.post("/echo", function(req, res) {
     req.body.result.parameters.echoText
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
+	  global.underscore=req.body.result.parameters.echoText + "Hi";
   return res.json({
     speech: speech,
-    displayText: speech,
+    displayText: global.underscore,
     source: "webhook-echo-sample"
   });
 });
