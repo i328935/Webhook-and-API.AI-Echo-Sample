@@ -6,10 +6,12 @@
 $(document).ready(function(){
 var string ="aas"
     $("button").click(function(){
-        $.ajax({url: "https://namanapp.herokuapp.com", dataType: 'jsonp', jsonp: 'callback',jsonpCallback: 'jsonpCallback',success: function(result){
+        $.ajax({url: "https://namanapp.herokuapp.com", dataType: 'jsonp',success: function(result){
             //$("#div1").html(result);
 			//alert(result);
-        }});
+        },
+		error:function(result){
+		alert("why11")}});
     });
 	function jsonpCallback(data){
     alert("jsonpCallback");
