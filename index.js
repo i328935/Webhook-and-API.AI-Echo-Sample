@@ -29,7 +29,13 @@ restService.post("/echo", function(req, res) {
 });
 
 restService.get('/', function(req, res) {
+	if(config.salutation==="Hello"){
+		res.jsonp({"message":config.salutation});
+	}
+	else{
 	res.jsonp({"message":config.salutation}); 
+	config.salutation="Hello";
+	}
 });
 
 restService.get('/echo', function(req, res) {
