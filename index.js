@@ -28,6 +28,20 @@ restService.post("/echo", function(req, res) {
   });
 });
 
+restService.post("/process", function(req, res) {
+  var speech =
+    req.body.result &&
+    req.body.result.parameters &&
+    req.body.result.parameters.echoText
+      ? req.body.result.parameters.echoText
+      : "Seems like some problem. Speak again.";
+   res.json({
+    speech: "Processing",
+    displayText:"Naman",
+    source: "webhook-echo-sample"
+  });
+});
+
 restService.get('/', function(req, res) {
 	if(config.salutation==="Hello"){
 		res.jsonp({"message":config.salutation});
