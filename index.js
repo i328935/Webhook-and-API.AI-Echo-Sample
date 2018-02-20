@@ -3,7 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const restService = express();
-global.config = {"salutation": "Hello"};
+global.config = {"salutation": ""};
 global.success=
 restService.use(
   bodyParser.urlencoded({
@@ -44,7 +44,13 @@ restService.post("/process", function(req, res) {
 });
 
 restService.get('/', function(req, res) {
+	if(config.salutation===""){
 		res.jsonp({"message":config.salutation});
+	}
+	else{
+	res.jsonp({"message":config.salutation}); 
+	config.salutation="";
+	}
 });
 
 restService.get('/echo', function(req, res) {
