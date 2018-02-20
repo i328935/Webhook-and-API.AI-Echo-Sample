@@ -44,13 +44,8 @@ restService.post("/process", function(req, res) {
 });
 
 restService.get('/', function(req, res) {
-	if(config.salutation===""){
 		res.jsonp({"message":config.salutation});
-	}
-	else{
-	res.jsonp({"message":config.salutation}); 
 	config.salutation="";
-	}
 });
 
 restService.get('/echo', function(req, res) {
