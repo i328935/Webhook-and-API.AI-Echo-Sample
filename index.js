@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const restService = express();
 global.config = {"salutation": "Hello"};
-
+global.success=
 restService.use(
   bodyParser.urlencoded({
     extended: true
@@ -36,12 +36,6 @@ restService.post("/process", function(req, res) {
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
    res.json({
-	   followupEvent: {
-      "name":"SHOW_RESULT",
-      "data": {
-         "name":"Tester"
-      }
-		}
     speech: "Processing",
     displayText:"Naman",
     source: "webhook-echo-sample"
