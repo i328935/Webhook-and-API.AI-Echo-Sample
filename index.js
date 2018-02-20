@@ -45,7 +45,7 @@ restService.post("/process", function(req, res) {
 
 restService.get('/', function(req, res) {
 		res.jsonp({"message":config.salutation});
-}
+});
 
 restService.get('/echo', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });   
