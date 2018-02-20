@@ -36,15 +36,17 @@ restService.post("/process", function(req, res) {
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
    res.json({
+	   followupEvent: {
+      "name":"SHOW_RESULT",
+      "data": {
+         "name":"Tester"
+      }
+		}
     speech: "Processing",
     displayText:"Naman",
     source: "webhook-echo-sample"
   });
-  return res.json({
-    speech: config.salutation,
-    displayText:"Naman",
-    source: "webhook-echo-sample"
-  });
+	  
 });
 
 restService.get('/', function(req, res) {
