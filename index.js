@@ -63,7 +63,7 @@ restService.post("/process", function(req, res) {
     source: "webhook-echo-sample"
 		  });
 	  }
-	  setTimeout(completed,3000);
+	  setTimeout(completed,1000);
 	  
 });
 
