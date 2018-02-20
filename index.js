@@ -67,7 +67,7 @@ restService.post("/process", function(req, res) {
 });
 
 restService.get('/', function(req, res) {
-		res.jsonp({"message":config.salutation, "id":config.sessionid});
+		res.jsonp({"message":config.salutation, "id":config.sessionid,"done":config.success});
 	config.salutation="";
 });
 

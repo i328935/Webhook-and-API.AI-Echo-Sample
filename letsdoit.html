@@ -7,7 +7,7 @@ $(document).ready(function(){
 var string ="aas"
     $("button").click(function(){
         $.ajax({url: "https://namanapp.herokuapp.com", dataType: 'jsonp',success: function(result){
-            			alert(result.sessionid);
+            			alert(result.id);
 						},
 		error:function(result){
 		alert("why11");
