@@ -57,11 +57,11 @@ restService.post("/process", function(req, res) {
   });
 	  }
 	  else{
+		  res.json({
 		  followupEvent: {
         name: "LastEvent",
         data: { value1: "asd", value2: "qwe" }
     },
-		  res.json({
 			  speech: "Done",
     displayText:"NamanDone",
     source: "webhook-echo-sample"
