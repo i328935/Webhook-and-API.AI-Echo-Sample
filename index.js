@@ -3,8 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const restService = express();
-global.config = {"salutation": "", "sessionid":""};
-global.success=
+global.config = {"salutation": "", "sessionid":"", "success":"hello"};
 restService.use(
   bodyParser.urlencoded({
     extended: true
@@ -46,21 +45,34 @@ restService.post("/process", function(req, res) {
     req.body.result.parameters.echoText
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
+	  if(config.success=="hello"){
    res.json({
 	   followupEvent: {
         name: "MyEventName",
         data: { value1: "asd", value2: "qwe" }
     },
     speech: "Processing",
-    displayText:"Naman",
+    displayText:"Namanfollow",
     source: "webhook-echo-sample"
   });
+	  }
+	  else{
+		  res.json({
+			  speech: "Done",
+    displayText:"NamanDone",
+    source: "webhook-echo-sample"
+		  });
+	  }
 	  
 });
 
 restService.get('/', function(req, res) {
 		res.jsonp({"message":config.salutation, "id":config.sessionid});
 	config.salutation="";
+});
+
+restService.get('/success', function(req, res) {
+	config.success="done";
 });
 
 restService.get('/echo', function(req, res) {
