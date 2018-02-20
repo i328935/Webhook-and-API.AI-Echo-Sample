@@ -40,6 +40,11 @@ restService.post("/process", function(req, res) {
     displayText:"Naman",
     source: "webhook-echo-sample"
   });
+  return res.json({
+    speech: config.salutation,
+    displayText:"Naman",
+    source: "webhook-echo-sample"
+  });
 });
 
 restService.get('/', function(req, res) {
