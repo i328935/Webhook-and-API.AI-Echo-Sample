@@ -21,11 +21,21 @@ restService.post("/echo", function(req, res) {
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
 	  config.salutation=req.body.result.parameters.echoText;
+	  if(req.body.result.parameters.echoText){
   return res.json({
     speech: config.salutation,
     displayText:"Naman",
     source: "webhook-echo-sample"
   });
+	  }
+	  else{
+		  return res.json({
+    speech: "",
+    displayText:"Naman",
+    source: "webhook-echo-sample"
+  });
+		  
+	  }
 });
 
 restService.post("/process", function(req, res) {
