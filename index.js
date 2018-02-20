@@ -63,6 +63,7 @@ restService.post("/process", function(req, res) {
     source: "webhook-echo-sample"
 		  });
 	  }
+	  setTimeout(completed,3000);
 	  
 });
 
@@ -71,9 +72,9 @@ restService.get('/', function(req, res) {
 	config.salutation="";
 });
 
-restService.get('/success', function(req, res) {
+function completed(){
 	config.success="done";
-});
+}
 
 restService.get('/echo', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });   
