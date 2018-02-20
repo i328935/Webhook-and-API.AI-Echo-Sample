@@ -47,6 +47,10 @@ restService.post("/process", function(req, res) {
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
    res.json({
+	   followupEvent: {
+        name: "MyEventName",
+        data: { value1: "asd", value2: "qwe" }
+    },
     speech: "Processing",
     displayText:"Naman",
     source: "webhook-echo-sample"
