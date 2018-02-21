@@ -43,7 +43,7 @@ restService.get('/', function(req, res) {
 			res.jsonp({"message":config.salutation, "id":config.sessionid,"done":config.success});
 			config["oldSalutation"] = config.salutation;
 		}else{
-			res.jsonp({"message":"na", "id":config.sessionid,"done":config.success});
+			res.jsonp({"message":"", "id":config.sessionid,"done":config.success});
 		}
 		
 });
