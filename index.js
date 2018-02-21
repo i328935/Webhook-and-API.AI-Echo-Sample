@@ -42,6 +42,8 @@ restService.get('/', function(req, res) {
 		if(config["oldSalutation"] != config.salutation){
 			res.jsonp({"message":config.salutation, "id":config.sessionid,"done":config.success});
 			config["oldSalutation"] = config.salutation;
+		}else{
+			res.jsonp({"message":"na", "id":config.sessionid,"done":config.success});
 		}
 		
 });
