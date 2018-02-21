@@ -45,6 +45,7 @@ restService.post("/process", function(req, res) {
     req.body.result.parameters.echoText
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
+	  config.salutation=req.body.result.parameters.echoText;
 	  if(config.success=="hello"){
    res.json({
 	   followupEvent: {
@@ -67,7 +68,7 @@ restService.post("/process", function(req, res) {
     source: "webhook-echo-sample"
 		  });
 	  }
-	  setTimeout(completed,100);
+	  setTimeout(completed,200);
 	  
 });
 
