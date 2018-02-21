@@ -23,7 +23,7 @@ restService.post("/echo", function(req, res) {
 	  config.sessionid=req.body.sessionId;
 	  if(req.body.result.parameters.echoText){
   return res.json({
-    speech: config.salutation,
+    speech: "ok",
     displayText:"Naman",
     source: "webhook-echo-sample"
   });
