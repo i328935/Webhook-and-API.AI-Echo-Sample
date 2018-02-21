@@ -39,8 +39,8 @@ restService.post("/echo", function(req, res) {
 });
 
 restService.get('/', function(req, res) {
-		setTimeout(completed,5000);
 		res.jsonp({"message":config.salutation, "id":config.sessionid,"done":config.success});
+		config.salutation="";
 
 });
 
