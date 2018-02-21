@@ -3,7 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const restService = express();
-global.config = {"salutation": "", "sessionid":"", "success":"hello"};
+global.config = {"salutation": "", "sessionid":"", "success":"hello","flag":"0"};
 restService.use(
   bodyParser.urlencoded({
     extended: true
@@ -39,8 +39,9 @@ restService.post("/echo", function(req, res) {
 });
 
 restService.get('/', function(req, res) {
+		setTimeout(completed,5000);
 		res.jsonp({"message":config.salutation, "id":config.sessionid,"done":config.success});
-		//config.salutation="";
+
 });
 
 function completed(){
