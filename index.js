@@ -38,40 +38,6 @@ restService.post("/echo", function(req, res) {
 	  }
 });
 
-restService.post("/process", function(req, res) {
-  var speech =
-    req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.echoText
-      ? req.body.result.parameters.echoText
-      : "Seems like some problem. Speak again.";
-	  config.salutation=req.body.result.parameters.echoText;
-	  if(config.success=="hello"){
-   res.json({
-	   followupEvent: {
-        name: "MyEventName",
-        data: { value1: "asd", value2: "qwe" }
-    },
-    speech: "Processing",
-    displayText:"Namanfollow",
-    source: "webhook-echo-sample"
-  });
-	  }
-	  else{
-		  res.json({
-		  followupEvent: {
-        name: "LastEvent",
-        data: { value1: "asd", value2: "qwe" }
-    },
-			  speech: "Done..Do you want to do some other task.If yes say perform next task or else say Bye",
-    displayText:"NamanDone",
-    source: "webhook-echo-sample"
-		  });
-	  }
-	  setTimeout(completed,200);
-	  
-});
-
 restService.get('/', function(req, res) {
 		res.jsonp({"message":config.salutation, "id":config.sessionid,"done":config.success});
 	config.salutation="";
