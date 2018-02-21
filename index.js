@@ -39,7 +39,11 @@ restService.post("/echo", function(req, res) {
 });
 
 restService.get('/', function(req, res) {
-		res.jsonp({"message":config.salutation, "id":config.sessionid,"done":config.success});
+		if(config["oldSalutation"] !== config.salutation){
+			res.jsonp({"message":config.salutation, "id":config.sessionid,"done":config.success});
+			config["oldSalutation"] = config.salutation;
+		}
+		
 });
 
 function completed(){
