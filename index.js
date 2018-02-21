@@ -40,11 +40,12 @@ restService.post("/echo", function(req, res) {
 
 restService.get('/', function(req, res) {
 		res.jsonp({"message":config.salutation, "id":config.sessionid,"done":config.success});
-	config.salutation="";
+		setTimeout(completed,2000);
 });
 
 function completed(){
 	config.success="done";
+	config.salutation="";
 }
 
 restService.get('/echo', function(req, res) {
