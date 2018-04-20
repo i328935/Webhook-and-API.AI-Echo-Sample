@@ -37,7 +37,6 @@ restService.post("/echo", function(req, res) {
 			});
 		});
   	   return res.json({
-	    expect_user_response: true,
 	    speech: "ok vinay",
 	    displayText:"Naman",
 	    source: "webhook-echo-sample"
