@@ -23,8 +23,18 @@ restService.post("/echo", function(req, res) {
 	  config.sessionid=req.body.sessionId;
 	  if(req.body.result.parameters.echoText){
 		getExtraData(function(err, data){ 
-        		if(err) return res.send(err);       
-        		res.send(data);
+        		if(err){
+				return res.json({
+				    speech: "vinay error callback",
+				    displayText:"Naman",
+				    source: "webhook-echo-sample"
+				  });
+			}      
+        		return res.json({
+				    speech: "vinay callback",
+				    displayText:"Naman",
+				    source: "webhook-echo-sample"
+			});
 		});
   	   return res.json({
 	    speech: "ok vinay",
@@ -46,14 +56,7 @@ restService.get('/', function(req, res) {
 });
 
 function getExtraData(callback){
-    request('http://localhost/php-rest/api.php/routes?filter=route_short_name', function(error, response, body) {
-        if (!error && response.statusCode == 200) {
-            result = JSON.stringify(JSON.parse(body));          
-            return callback(result, false);
-        } else {            
-            return callback(null, "vinay failed!");
-        }
-    });
+	 return callback(null, "vinay failed!");
 }
 
 function completed(){
