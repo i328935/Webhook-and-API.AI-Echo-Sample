@@ -51,7 +51,7 @@ function getExtraData(callback){
             result = JSON.stringify(JSON.parse(body));          
             return callback(result, false);
         } else {            
-            return callback(null, vinay failed!);;
+            return callback(null, "vinay failed!");
         }
     });
 }
