@@ -56,7 +56,10 @@ restService.get('/', function(req, res) {
 });
 
 function getExtraData(callback){
-	 return callback(null, "vinay failed!");
+	process.nextTick(function(){
+        return callback(null, "vinay failed!");
+    });
+	 
 }
 
 function completed(){
