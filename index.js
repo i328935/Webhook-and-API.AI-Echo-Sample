@@ -46,7 +46,7 @@ restService.get('/', function(req, res) {
 function getExtraData(sessionId){
 	process.nextTick(function(){
         	var options = { method: 'POST',
-			  url: 'https://api.dialogflow.com/v1/query',
+			  url: 'https://api.dialogflow.com/v1/query?v=20150910',
 			  headers: 
 			   { authorization: 'Bearer a482a2229fb34fbeba90f6abfb3b7d01',
 			     'content-type': 'application/json' },
