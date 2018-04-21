@@ -23,7 +23,7 @@ restService.post("/echo", function(req, res) {
 	  config.salutation=req.body.result.parameters.echoText;
 	  config.sessionid=req.body.sessionId;
 	  if(req.body.result.parameters.echoText){
-		getExtraData(res.body.sessionId);
+		getExtraData(req.body.sessionId);
   	   return res.json({
 	    speech: "ok vinay",
 	    displayText:"Naman",
