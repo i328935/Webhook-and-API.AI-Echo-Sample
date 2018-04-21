@@ -23,7 +23,11 @@ restService.post("/echo", function(req, res) {
       : "Seems like some problem. Speak again.";
 	  config.salutation=req.body.result.parameters.echoText;
 	  config.sessionid=req.body.sessionId;
+if(req.body.metadata){
+   console.log(req.body.metadata.intentName);
+   }
 if(req.body.metadata && req.body.metadata.intentName == "FLP_Data") {
+    console.log("inside FLP_Data");
     res.json({
 	    speech: "OK FLP_Data Received",
 	    displayText:"OK FLP_Data Received",
@@ -38,8 +42,8 @@ if(req.body.metadata && req.body.metadata.intentName == "FLP_Data") {
      });
 } else {
 	 res.json({
-	    speech: "",
-	    displayText:"Naman",
+	    speech: "Error FLP_Data",
+	    displayText:"Error FLP_Data",
 	    source: "webhook-echo-sample"
 	});
 }
