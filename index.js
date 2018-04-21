@@ -23,7 +23,7 @@ restService.post("/echo", function(req, res) {
       : "Seems like some problem. Speak again.";
 	  config.salutation=req.body.result.parameters.echoText;
 	  config.sessionid=req.body.sessionId;
-if(req.body.metadata.intentName == "FLP_Data") {
+if(req.body.metadata && req.body.metadata.intentName == "FLP_Data") {
     res.json({
 	    speech: "OK FLP_Data Received",
 	    displayText:"OK FLP_Data Received",
