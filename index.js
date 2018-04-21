@@ -51,7 +51,7 @@ function getExtraData(sessionId){
 			  headers: 
 			   { authorization: 'Bearer a482a2229fb34fbeba90f6abfb3b7d01',
 			     'content-type': 'application/json' },
-			  body: '{"lang": "en","event": {name: "RESULTS_READY"},"sessionId": sessionId}'};
+			  body: {"lang": "en","event": {name: "RESULTS_READY"},"sessionId": sessionId}};
 
 			request(options, function (error, response, body) {
 			  if (error) throw new Error(error);
