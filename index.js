@@ -14,6 +14,7 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
+  console.log("Request",req.body);
   var speech =
     req.body.result &&
     req.body.result.parameters &&
@@ -23,12 +24,14 @@ restService.post("/echo", function(req, res) {
 	  config.salutation=req.body.result.parameters.echoText;
 	  config.sessionid=req.body.sessionId;
 	  if(req.body.result.parameters.echoText){
-		getExtraData(req.body.sessionId);
   	    res.json({
 	    speech: "ok vinay",
 	    displayText:"Naman",
 	    source: "webhook-echo-sample"
   	  });
+		  setTimeout(function(){
+			getExtraData(req.body)
+		  },2000)
 	  } else{
 		 res.json({
 		    speech: "",
@@ -43,9 +46,8 @@ restService.get('/', function(req, res) {
 		
 });
 
-function getExtraData(sessionId){
-	console.log(sessionId);
-	var body = {"lang": "en","event": {name: "RESULTS_READY"},"sessionId": sessionId};
+function getExtraData(ecoreq){
+	var body = {"lang": "en","event": {name: "RESULTS_READY"},"sessionId": ecoreq.sessionId,"contexts":ecoreq.contexts};
 	process.nextTick(function(){
         	var options = { method: 'POST',
 			  url: 'https://api.dialogflow.com/v1/query?v=20150910',
