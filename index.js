@@ -3,6 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const restService = express();
+var request = require('request');
 global.config = {"salutation": "", "sessionid":"", "success":"hello","flag":"0"};
 restService.use(
   bodyParser.urlencoded({
@@ -22,20 +23,7 @@ restService.post("/echo", function(req, res) {
 	  config.salutation=req.body.result.parameters.echoText;
 	  config.sessionid=req.body.sessionId;
 	  if(req.body.result.parameters.echoText){
-		getExtraData(function(err, data){ 
-        		if(err){
-				return res.json({
-				    speech: "vinay error callback",
-				    displayText:"Naman",
-				    source: "webhook-echo-sample"
-				  });
-			}      
-        		return res.json({
-				    speech: "vinay callback",
-				    displayText:"Naman",
-				    source: "webhook-echo-sample"
-			});
-		});
+		getExtraData(res.body.sessionId);
   	   return res.json({
 	    speech: "ok vinay",
 	    displayText:"Naman",
@@ -55,11 +43,22 @@ restService.get('/', function(req, res) {
 		
 });
 
-function getExtraData(callback){
+function getExtraData(sessionId){
 	process.nextTick(function(){
-        return callback(null, "vinay failed!");
-    });
-	 
+        	var options = { method: 'POST',
+			  url: 'https://api.dialogflow.com/v1/query',
+			  headers: 
+			   { authorization: 'Bearer a482a2229fb34fbeba90f6abfb3b7d01',
+			     'content-type': 'application/json' },
+			  body: '{"lang": "en","event": {name: "RESULTS_READY"},"sessionId": sessionId}'};
+
+			request(options, function (error, response, body) {
+			  if (error) throw new Error(error);
+
+			  console.log(body);
+			});
+
+    });	 
 }
 
 function completed(){
