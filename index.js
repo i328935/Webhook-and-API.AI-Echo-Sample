@@ -44,6 +44,7 @@ restService.get('/', function(req, res) {
 });
 
 function getExtraData(sessionId){
+	console.log(sessionId);
 	process.nextTick(function(){
         	var options = { method: 'POST',
 			  url: 'https://api.dialogflow.com/v1/query?v=20150910',
