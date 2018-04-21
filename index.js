@@ -14,7 +14,7 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
-  console.log("Request Meta",req.body.metadata);
+  console.log("Request Meta",req.body);
   var speech =
     req.body.result &&
     req.body.result.parameters &&
@@ -23,7 +23,7 @@ restService.post("/echo", function(req, res) {
       : "Seems like some problem. Speak again.";
 	  config.salutation=req.body.result.parameters.echoText;
 	  config.sessionid=req.body.sessionId;
-if(req.body.metadata && (req.body.metadata.intentName == "FLP_Data")) {
+if(req.body.result.metadata.intentName == "FLP_Data") {
     console.log("inside FLP_Data");
     res.json({
 	    speech: "OK FLP_Data Received",
