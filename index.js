@@ -47,7 +47,7 @@ restService.get('/', function(req, res) {
 });
 
 function getExtraData(ecoreq){
-	var body = {"lang": "en","event": {name: "RESULTS_READY"},"sessionId": ecoreq.sessionId,"contexts":ecoreq.results.contexts};
+	var body = {"lang": "en","event": {name: "RESULTS_READY"},"sessionId": ecoreq.sessionId,"contexts":ecoreq.result.contexts};
 	console.log("Query Body",JSON.stringify(body));
 	process.nextTick(function(){
         	var options = { method: 'POST',
