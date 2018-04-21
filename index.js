@@ -14,7 +14,7 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
-  console.log("Request",req.body);
+  console.log("Request Meta",req.body.metadata);
   var speech =
     req.body.result &&
     req.body.result.parameters &&
@@ -23,10 +23,7 @@ restService.post("/echo", function(req, res) {
       : "Seems like some problem. Speak again.";
 	  config.salutation=req.body.result.parameters.echoText;
 	  config.sessionid=req.body.sessionId;
-if(req.body.metadata){
-   console.log(req.body.metadata.intentName);
-   }
-if(req.body.metadata && req.body.metadata.intentName == "FLP_Data") {
+if(req.body.metadata && (req.body.metadata.intentName == "FLP_Data")) {
     console.log("inside FLP_Data");
     res.json({
 	    speech: "OK FLP_Data Received",
@@ -34,12 +31,12 @@ if(req.body.metadata && req.body.metadata.intentName == "FLP_Data") {
 	    source: "webhook-echo-sample"
      });	
 } else if(req.body.result.parameters.echoText){
-     getExtraData(req.body)
      res.json({
 	    speech: "ok vinay",
 	    displayText:"Naman",
 	    source: "webhook-echo-sample"
      });
+     getExtraData(req.body)
 } else {
 	 res.json({
 	    speech: "Error FLP_Data",
@@ -55,8 +52,7 @@ restService.get('/', function(req, res) {
 });
 
 function getExtraData(ecoreq){
-	var body = {"lang": "en","event": {name: "RESULTS_READY"},"sessionId": ecoreq.sessionId,"contexts":ecoreq.result.contexts};
-	console.log("Query Body",JSON.stringify(body));
+	var body = {"lang": "en","event": {name: "RESULTS_READY"},"sessionId": ecoreq.sessionId};
 	process.nextTick(function(){
         	var options = { method: 'POST',
 			  url: 'https://api.dialogflow.com/v1/query?v=20150910',
