@@ -30,13 +30,13 @@ if(req.body.metadata.intentName = "FLP_Data") {
 	    source: "webhook-echo-sample"
      });	
 } else if(req.body.result.parameters.echoText){
+     getExtraData(req.body)
      res.json({
 	    speech: "ok vinay",
 	    displayText:"Naman",
 	    source: "webhook-echo-sample"
-     });setTimeout(function(){
-		getExtraData(req.body)},2000)
-}else {
+     });
+} else {
 	 res.json({
 	    speech: "",
 	    displayText:"Naman",
