@@ -24,13 +24,13 @@ restService.post("/echo", function(req, res) {
 	  config.sessionid=req.body.sessionId;
 	  if(req.body.result.parameters.echoText){
 		getExtraData(req.body.sessionId);
-  	   return res.json({
+  	    res.json({
 	    speech: "ok vinay",
 	    displayText:"Naman",
 	    source: "webhook-echo-sample"
   	  });
 	  } else{
-		return res.json({
+		 res.json({
 		    speech: "",
 		    displayText:"Naman",
 		    source: "webhook-echo-sample"
