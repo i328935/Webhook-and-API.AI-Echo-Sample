@@ -47,7 +47,8 @@ restService.get('/', function(req, res) {
 });
 
 function getExtraData(ecoreq){
-	var body = {"lang": "en","event": {name: "RESULTS_READY"},"sessionId": ecoreq.sessionId,"contexts":ecoreq.contexts};
+	var body = {"lang": "en","event": {name: "RESULTS_READY"},"sessionId": ecoreq.sessionId,"contexts":ecoreq.results.contexts};
+	console.log("Query Body",JSON.stringify(body));
 	process.nextTick(function(){
         	var options = { method: 'POST',
 			  url: 'https://api.dialogflow.com/v1/query?v=20150910',
