@@ -23,22 +23,26 @@ restService.post("/echo", function(req, res) {
       : "Seems like some problem. Speak again.";
 	  config.salutation=req.body.result.parameters.echoText;
 	  config.sessionid=req.body.sessionId;
-	  if(req.body.result.parameters.echoText){
-  	    res.json({
+if(req.body.metadata.intentName = "FLP_Data") {
+    res.json({
+	    speech: "OK FLP_Data Received",
+	    displayText:"OK FLP_Data Received",
+	    source: "webhook-echo-sample"
+     });	
+} else if(req.body.result.parameters.echoText){
+     res.json({
 	    speech: "ok vinay",
 	    displayText:"Naman",
 	    source: "webhook-echo-sample"
-  	  });
-		  setTimeout(function(){
-			getExtraData(req.body)
-		  },2000)
-	  } else{
-		 res.json({
-		    speech: "",
-		    displayText:"Naman",
-		    source: "webhook-echo-sample"
-  		});
-	}
+     });setTimeout(function(){
+		getExtraData(req.body)},2000)
+}else {
+	 res.json({
+	    speech: "",
+	    displayText:"Naman",
+	    source: "webhook-echo-sample"
+	});
+}
 });
 
 restService.get('/', function(req, res) {
