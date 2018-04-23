@@ -25,20 +25,20 @@ restService.post("/echo", function(req, res) {
 	  config.sessionid=req.body.sessionId;
 if(req.body.result.metadata.intentName == "FLP_Data") {
     console.log("inside FLP_Data");
-    res.json({
+    return res.json({
 	    speech: "OK FLP_Data Received",
 	    displayText:"OK FLP_Data Received",
 	    source: "webhook-echo-sample"
      });	
 } else if(req.body.result.parameters.echoText){
-     res.json({
+     return res.json({
 	    speech: "ok vinay",
 	    displayText:"Naman",
 	    source: "webhook-echo-sample"
      });
      getExtraData(req.body)
 } else {
-	 res.json({
+	 return res.json({
 	    speech: "Error FLP_Data",
 	    displayText:"Error FLP_Data",
 	    source: "webhook-echo-sample"
