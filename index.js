@@ -31,12 +31,12 @@ if(req.body.result.metadata.intentName == "FLP_Data") {
 	    source: "webhook-echo-sample"
      });	
 } else if(req.body.result.parameters.echoText){
+     getExtraData(req.body)
      return res.json({
 	    speech: "ok vinay",
 	    displayText:"Naman",
 	    source: "webhook-echo-sample"
      });
-     getExtraData(req.body)
 } else {
 	 return res.json({
 	    speech: "Error FLP_Data",
