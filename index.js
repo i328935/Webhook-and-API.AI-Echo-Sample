@@ -52,7 +52,7 @@ restService.get('/', function(req, res) {
 });
 
 function getExtraData(ecoreq){
-	var body = {"lang": "en","event": {name: "RESULTS_READY"},"sessionId": ecoreq.sessionId};
+	var body = {"lang": "en","event": {name: "RESULTS_READY", "data": {"FLP_Text": "Event_Data"}},"sessionId": ecoreq.sessionId};
 	process.nextTick(function(){
         	var options = { method: 'POST',
 			  url: 'https://api.dialogflow.com/v1/query?v=20150910',
